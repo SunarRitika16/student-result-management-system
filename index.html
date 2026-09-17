@@ -1,0 +1,210 @@
+<div class="app">
+
+  <header class="header">
+    <div>
+      <h1>🎓 Student Result Management</h1>
+      <p>Manage student records, marks and results</p>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <button onclick="showSection('dashboard')">📊 Dashboard</button>
+    <button onclick="showSection('add')">➕ Add Student</button>
+    <button onclick="showSection('students')">👥 Students</button>
+  </nav>
+
+  <!-- DASHBOARD -->
+
+  <section id="dashboard" class="section">
+
+    <h2>Dashboard</h2>
+
+    <div class="stats">
+
+      <div class="stat-card">
+        <span>👥</span>
+        <h3 id="totalStudents">0</h3>
+        <p>Total Students</p>
+      </div>
+
+      <div class="stat-card">
+        <span>✅</span>
+        <h3 id="passedStudents">0</h3>
+        <p>Passed</p>
+      </div>
+
+      <div class="stat-card">
+        <span>❌</span>
+        <h3 id="failedStudents">0</h3>
+        <p>Failed</p>
+      </div>
+
+      <div class="stat-card">
+        <span>📈</span>
+        <h3 id="averagePercentage">0%</h3>
+        <p>Average</p>
+      </div>
+
+    </div>
+
+    <div class="dashboard-card">
+
+      <h3>🏆 Top Student</h3>
+
+      <div id="topStudent">
+        No student records yet.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ADD STUDENT -->
+
+  <section id="add" class="section hidden">
+
+    <h2 id="formTitle">➕ Add Student</h2>
+
+    <form id="studentForm">
+
+      <input type="hidden" id="editId">
+
+      <label>Student Name</label>
+      <input
+        type="text"
+        id="studentName"
+        placeholder="Enter student name"
+        required
+      >
+
+      <label>Class</label>
+      <input
+        type="text"
+        id="studentClass"
+        placeholder="Example: Grade 12"
+        required
+      >
+
+      <label>Address</label>
+      <input
+        type="text"
+        id="studentAddress"
+        placeholder="Enter address"
+        required
+      >
+
+      <h3 class="subject-title">📚 Subject Marks</h3>
+
+      <div class="subjects">
+
+        <div>
+          <label>Mathematics</label>
+          <input type="number" id="mathematics" min="0" max="100" required>
+        </div>
+
+        <div>
+          <label>Physics</label>
+          <input type="number" id="physics" min="0" max="100" required>
+        </div>
+
+        <div>
+          <label>Chemistry</label>
+          <input type="number" id="chemistry" min="0" max="100" required>
+        </div>
+
+        <div>
+          <label>Computer Science</label>
+          <input type="number" id="computer" min="0" max="100" required>
+        </div>
+
+        <div>
+          <label>English</label>
+          <input type="number" id="english" min="0" max="100" required>
+        </div>
+
+        <div>
+          <label>Nepali</label>
+          <input type="number" id="nepali" min="0" max="100" required>
+        </div>
+
+        <div>
+          <label>Social Studies</label>
+          <input type="number" id="social" min="0" max="100" required>
+        </div>
+
+      </div>
+
+      <div class="form-buttons">
+
+        <button type="submit" class="primary">
+          💾 Save Student
+        </button>
+
+        <button
+          type="button"
+          class="secondary"
+          onclick="resetForm()"
+        >
+          Clear
+        </button>
+
+      </div>
+
+    </form>
+
+  </section>
+
+
+  <!-- STUDENTS -->
+
+  <section id="students" class="section hidden">
+
+    <div class="student-header">
+
+      <div>
+        <h2>👥 Student Records</h2>
+        <p id="studentCount">0 students</p>
+      </div>
+
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="🔎 Search student..."
+        oninput="displayStudents()"
+      >
+
+    </div>
+
+    <div id="studentList"></div>
+
+  </section>
+
+
+  <!-- REPORT MODAL -->
+
+  <div id="reportModal" class="modal hidden">
+
+    <div class="modal-content">
+
+      <button
+        class="close"
+        onclick="closeReport()"
+      >
+        ✕
+      </button>
+
+      <div id="reportContent"></div>
+
+      <button
+        class="primary print-button"
+        onclick="window.print()"
+      >
+        🖨️ Print Report
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
